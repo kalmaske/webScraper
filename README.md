@@ -2,7 +2,7 @@
 
 The app scrapes the NewYorkTimes website for new articles and adding them to the Database
 
-Whenever a user visits the site, and press Scrape new articles the app scrapes stories from NYTe and display them for the user. 
+Whenever a user visits the site, and press Scrape new articles the app scrapes stories from NYT website and display them for the user. 
 
 Each scraped article will be saved to the apps' database. 
 
