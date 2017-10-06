@@ -51,11 +51,11 @@ app.get("/articles/:savedArt", function (req, res) {
           });
   });
 
-  app.post("/articlesSaved/:id", function (req, res) {
+  app.post("/saveArticle/:id", function (req, res) {
     
         var id = req.params.id;
     
-        Article.findByIdAndUpdate(id, { $set: { save: 'true' } }, { new: true }, function (err, article) {
+        Article.findByIdAndUpdate(id, { $set: { savedArt: true } }, { new: true }, function (err, article) {
             if (err) res.send(err);;
             res.send(article);
         });
