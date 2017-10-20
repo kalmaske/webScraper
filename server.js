@@ -25,7 +25,7 @@ app.set("view engine", "handlebars");
 // Database configuration with mongoose
 // connect local
 // mongoose.connect("mongodb://localhost/newsscraper");
-mongoose.connect("");
+mongoose.connect("mongodb://heroku_vnmdws07:ja8fr4tdbsnut5k4pfkjm76osh@ds125555.mlab.com:25555/heroku_vnmdws07");
 
 var db = mongoose.connection;
 
