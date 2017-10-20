@@ -2,50 +2,46 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
-var handlebars = require('express-handlebars');
 var mongoose = require("mongoose");
+// Parses our HTML and helps us find elements
 var cheerio = require("cheerio");
+// Makes HTTP request for HTML page for ajax get
 var request = require("request");
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
-// Require the routes and use them
-var routes = require('./routes/routes');
+var port = process.env.PORT || 7777;
 
-// Initialize Express
 var app = express();
-
-// var db = "mongodb://localhost/newsScrape" || process.env.MONGODB_URI;
-
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Database configuration with mongoose
+// connect local
+// mongoose.connect("mongodb://localhost/newsscraper");
+mongoose.connect("mongodb://heroku_k4bn9qp2:q137dpgvmdvl5rt0t0ha10uupl@ds149144.mlab.com:49144/heroku_k4bn9qp2");
 
-
-mongoose.connect("mongodb://localhost/newsScrape");
 var db = mongoose.connection;
-// mongoose.connect(db);
 
+// Show any mongoose errors
 db.on("error", function (error) {
-  console.log("mongoose error: ", error);
+  console.log("Mongoose Error: ", error);
 });
 
+// Once logged in to the db through mongoose, log a success message
 db.once("open", function () {
-  console.log("successful connection - mongoose.");
+  console.log("Mongoose connection successful.");
 });
 
-var routes = require("./controller/scraperController.js");
+// Import routes and give the server access to them.
+var routes = require("./controllers/scrapercontroller.js");
+
 app.use("/", routes);
 
-// Launch App
-var port = process.env.PORT || 7777;
-
-
-app.listen(port, function()
-{
-  console.log('Running on port: ' + port);
-});
+app.listen(port);
