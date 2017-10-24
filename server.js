@@ -25,7 +25,10 @@ app.set("view engine", "handlebars");
 // Database configuration with mongoose
 // connect local
 // mongoose.connect("mongodb://localhost/newsscraper");
-mongoose.connect("mongodb://heroku_vnmdws07:ja8fr4tdbsnut5k4pfkjm76osh@ds125555.mlab.com:25555/heroku_vnmdws07");
+// mongoose.connect("mongodb://heroku_vnmdws07:ja8fr4tdbsnut5k4pfkjm76osh@ds125555.mlab.com:25555/heroku_vnmdws07");
+mongoose.connect("mongodb://<kalmaske>:<Newchapter_2017>@ds125555.mlab.com:25555/heroku_vnmdws07");
+
+
 
 var db = mongoose.connection;
 
@@ -45,3 +48,6 @@ var routes = require("./controllers/scrapercontroller.js");
 app.use("/", routes);
 
 app.listen(port);
+
+
+// % mongo ds012345.mlab.com:56789/newScrape -u dbuser -p dbpassword
