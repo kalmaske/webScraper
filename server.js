@@ -26,7 +26,7 @@ app.set("view engine", "handlebars");
 // connect local
 // mongoose.connect("mongodb://localhost/newsscraper");
 // mongoose.connect("mongodb://heroku_vnmdws07:ja8fr4tdbsnut5k4pfkjm76osh@ds125555.mlab.com:25555/heroku_vnmdws07");
-mongoose.connect("mongodb://<kalmaske>:<Newchapter_2017>@ds125555.mlab.com:25555/heroku_vnmdws07");
+mongoose.connect("mongodb://heroku_vnmdws07:ja8fr4tdbsnut5k4pfkjm76osh@ds125555.mlab.com:25555/heroku_vnmdws07");
 
 
 
